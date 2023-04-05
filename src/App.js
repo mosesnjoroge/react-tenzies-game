@@ -2,27 +2,52 @@ import './components/css/App.css';
 import Header from './components/dieComponents/Header';
 import NewDie from './components/dieComponents/Newdie';
 import Die from './components/dieComponents/Die';
+import { nanoid } from 'nanoid';
 
 function App() {
 
+  const[dice, setDice] = React.useState(allNewDice())
+
+  function generateNewDie() {
+    return {
+      value: Math.ceil(Math.random() * 6),
+      isHeld:false,
+      id:nanoid()
+    }
+  }
+
+  function allNewDie() {
+    const newDice = []
+    for (let i = 0; i < 10; i++){
+      newDice.push(generateNewDice())
+    }
+    return newDice
+    }
+
+    function holdDice(id) {
+      setDice(oldDice => oldDiceDice.map(die =>{
+        return die.id === id ?
+        {...die, isHeld: !die.isHeld}:
+        die
+      }))
+    }
+
+    function diceElements = dice.map(die => (
+      <Die
+        key={die.id}
+        value ={value.id}
+        isHeld={die.isHeld}
+        holdDice={() => holdDice(die.id)}
+      />
+    ))
 
   return (
     <div className="App">
       <Header />
       <div className= 'dice-container'>
-        <Die value = '1'/>
-        <Die value = '2'/>
-        <Die value = '3'/>
-        <Die value = '4'/>
-        <Die value = '5'/>
-        <Die value = '6'/>
-        <Die value = '7'/>
-        <Die value = '8'/>
-        <Die value = '9'/>
-        <Die value = '10'/>
+        {diceElements}
       </div>
-      <NewDie />
-      <button className='roll--btn'>Roll</button>
+      <button className='roll--btn' onClick={rollDice}>Roll</button>
     </div>
   );
 }
