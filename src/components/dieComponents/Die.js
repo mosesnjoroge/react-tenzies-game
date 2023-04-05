@@ -2,19 +2,15 @@ import React from 'react';
 
 
 export default function Die(props) {
-
-
-  // const holdDice =(id) =>{
-  //   setDice(oldDice => oldDiceDice.map(die =>{
-  //     return die.id === id ?
-  //     {...die, isHeld: !die.isHeld}:
-  //     die
-  //   }))
-  // }
-
-
+  const styles = {
+    backgroundColor:props.isHeld ? "#59E391" :"white"
+    }
   return (
-    <div className='dice--face'>
+    <div
+      className='dice--face'
+      style = {styles}
+      onClick= {props.holdDice}
+    >
       <h2 className='die--num'>{props}</h2>
     </div>
   )
