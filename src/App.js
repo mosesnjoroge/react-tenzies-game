@@ -22,6 +22,7 @@ function App() {
         <Die value = '10'/>
       </div>
       <NewDie />
+      <button className='roll--btn'>Roll</button>
     </div>
   );
 }
