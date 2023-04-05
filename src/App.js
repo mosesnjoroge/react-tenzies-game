@@ -3,10 +3,9 @@ import Header from './components/dieComponents/Header';
 import NewDie from './components/dieComponents/Newdie';
 import Die from './components/dieComponents/Die';
 import { nanoid } from 'nanoid';
-import { useEffect } from 'react';
+import { React,useEffect } from 'react';
 
 function App() {
-
 
   const [tenzies, setTenzies] = React.useState(false);
 
@@ -22,23 +21,18 @@ function App() {
     }
   }
 
-    // function holdDice(id) {
-    //   setDice(oldDice => oldDiceDice.map(die =>{
-    //     return die.id === id ?
-    //     {...die, isHeld: !die.isHeld}:
-    //     die
-    //   }))
-    // }
+  const diceElements = Die.map(die => (
+    <Die
+      key={die.id}
+      value ={value.id}
+      isHeld={die.isHeld}
+      holdDice={() => holdDice(die.id)}
+    />
+  ))
 
-    // function diceElements = dice.map(die => (
-    //   <Die
-    //     key={die.id}
-    //     value ={value.id}
-    //     isHeld={die.isHeld}
-    //     holdDice={() => holdDice(die.id)}
-    //   />
-    // ))
-
+  // function rollDice() {
+  //   onchange
+  // }
   return (
     <div className="App">
       <Header />
@@ -46,8 +40,7 @@ function App() {
         {diceElements}
       </div>
       <NewDie/>
-      <button className='roll--btn' onClick={rollDice}>Roll</button>
-
+      {/* <button className='roll--btn' onClick={rollDice}>Roll</button> */}
     </div>
   );
 }

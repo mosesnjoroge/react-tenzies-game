@@ -1,6 +1,5 @@
 import React from 'react';
-// import Button from 'react-bootstrap/Button';
-// import  Container  from 'react-bootstrap/Container';
+
 
 export default function Newdie() {
 
@@ -12,8 +11,6 @@ export default function Newdie() {
     <div>
       {newDice}
     </div>
-    // <Container>
-    //   <Button variant="primary">Roll</Button>
-    // </Container>
+
   );
 }
