@@ -3,15 +3,14 @@ import Header from './components/dieComponents/Header';
 import NewDie from './components/dieComponents/Newdie';
 import Die from './components/dieComponents/Die';
 import { nanoid } from 'nanoid';
-import { React,useEffect } from 'react';
+import { useState } from 'react';
 
 function App() {
 
-  const [tenzies, setTenzies] = React.useState(false);
+  // const [tenzies, setTenzies] = React.useState(false);
+  const[dice, setDice] = useState(allNewDice())
 
-  useEffect(() => {
-    console.log('Dice state changed')
-  }, [dice])
+  //an array that generates 10 random numbers between 1-6
 
   function generateNewDie() {
     return {
@@ -21,18 +20,36 @@ function App() {
     }
   }
 
+  function allNewDice() {
+    const newDice = []
+    for (let i = 0; i < 10; i++){
+      newDice.push(generateNewDie())
+    }
+    return (
+      newDice
+      );
+    }
+
+  // const holdDice =(id) =>{
+  //   setDice(oldDice => oldDiceDice.map(die =>{
+  //     return die.id === id ?
+  //     {...die, isHeld: !die.isHeld}:
+  //     die
+  //   }))
+  // }
   const diceElements = Die.map(die => (
     <Die
-      key={die.id}
-      value ={value.id}
-      isHeld={die.isHeld}
-      holdDice={() => holdDice(die.id)}
+    key={die.id}
+    value ={die}
+    isHeld={die.isHeld}
+    // holdDice={() => holdDice(die.id)}
     />
-  ))
+    ))
 
-  // function rollDice() {
-  //   onchange
-  // }
+  function rollDice(){
+    setDice(allNewDice())
+  }
+
   return (
     <div className="App">
       <Header />
@@ -40,7 +57,7 @@ function App() {
         {diceElements}
       </div>
       <NewDie/>
-      {/* <button className='roll--btn' onClick={rollDice}>Roll</button> */}
+      <button className='roll--btn' onClick={rollDice}>Roll</button>
     </div>
   );
 }
