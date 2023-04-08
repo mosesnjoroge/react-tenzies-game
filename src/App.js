@@ -3,6 +3,7 @@ import Header from './components/dieComponents/Header';
 import Die from './components/dieComponents/Die';
 import { nanoid } from 'nanoid';
 import {React, useState, useEffect} from 'react';
+import Confetti from 'react-confetti';
 
 function App() {
 
@@ -12,7 +13,6 @@ function App() {
 
   // game status validation
   useEffect(() => {
-
     const allHeld = dice.every(die => die.isHeld)
     const iniValue = dice[0].value;
 
@@ -43,12 +43,18 @@ function App() {
 
   // //roll dice
   function rollDice(){
-    setDice(oldDice => oldDice.map(die => {
-      return ( die.isHeld ?
-        die :
-        generateNewDie()
-        )
-    }))
+    if (!tenzies){
+      setDice(oldDice => oldDice.map(die => {
+        return (
+          die.isHeld ?
+          die :
+          generateNewDie()
+          )
+      }))
+    } else
+      setTenzies(false);
+      setDice(resetDice());
+
   }
 
   // //holding dice value
@@ -75,16 +81,17 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <div className= 'dice-container'>
-        {diceElements}
-      </div>
-      <button
-        className='roll--btn'
-        onClick = {rollDice}
-      >
-        {tenzies ? "New Game": "Roll"}
-        </button>
+      {tenzies && <Confetti />}
+        <Header />
+        <div className= 'dice-container'>
+          {diceElements}
+        </div>
+        <button
+          className='roll--btn'
+          onClick = {rollDice}
+        >
+          {tenzies ? "New Game": "Roll"}
+          </button>
     </div>
   );
 }
