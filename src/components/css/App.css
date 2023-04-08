@@ -37,3 +37,12 @@ body{
 .die--num{
   font-size: 2rem;
 }
+
+.roll--btn{
+  margin-top: 40px;
+  width:20%;
+  height:5%;
+  background-color: #AC2FCB;
+  color: white;
+  border-radius: 10px;
+}
