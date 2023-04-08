@@ -14,12 +14,10 @@ function App() {
 
     const allHeld = dice.every(die => die.isHeld)
 
-    const iniValue = () => {
-      return dice[0].value
-    }
+    const iniValue = console.log(valueOf(dice[0]));
 
     const currentDieValue = dice.map(die => {
-      return die.value
+      return die;
     })
 
     const allSameValue = dice.every(iniValue === currentDieValue )
@@ -74,9 +72,8 @@ function App() {
           key = {die.id}
           isHeld ={die.isHeld}
           holdDice={() => holdDice(die.id)}
-
         />
-        )
+      )
   })
 
   return (
@@ -85,7 +82,12 @@ function App() {
       <div className= 'dice-container'>
         {diceElements}
       </div>
-      <button className='roll--btn' onClick = {rollDice}>Roll</button>
+      <button
+        className='roll--btn'
+        onClick = {rollDice}
+      >
+        {tenzies ? "New Game": "Roll"}
+        </button>
     </div>
   );
 }
