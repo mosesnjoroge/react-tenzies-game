@@ -46,15 +46,12 @@ function App() {
     if (!tenzies){
       setDice(oldDice => oldDice.map(die => {
         return (
-          die.isHeld ?
-          die :
-          generateNewDie()
-          )
-      }))
+          die.isHeld ? die : generateNewDie()
+        )})
+      )
     } else
-      setTenzies(false);
-      setDice(resetDice());
-
+        setTenzies(false);
+        setDice(resetDice());
   }
 
   // //holding dice value
@@ -63,7 +60,7 @@ function App() {
       return (
         die.id === id ?
         {...die, isHeld: !die.isHeld}: die
-        )
+      )
     }))
   }
 
