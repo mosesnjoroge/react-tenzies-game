@@ -13,12 +13,8 @@ function App() {
   useEffect(() => {
 
     const allHeld = dice.every(die => die.isHeld)
-
-    const iniValue = console.log(valueOf(dice[0]));
-
-    const currentDieValue = dice.map(die => {
-      return die;
-    })
+    const iniValue = dice[0].value;
+    const currentDieValue = dice.map(die => die.value)
 
     const allSameValue = dice.every(iniValue === currentDieValue )
     if (allHeld && allSameValue === true){
@@ -40,7 +36,7 @@ function App() {
   function resetDice() {
     const newDice = []
     for (let i = 0; i < 10; i++) {
-      newDice.push(Math.ceil(Math.random() * 6))
+      newDice.push(generateNewDie())
     }
     return newDice
   }
@@ -68,8 +64,8 @@ function App() {
   const diceElements = dice.map(die => {
       return (
         <Die
-          value ={die.number}
           key = {die.id}
+          value ={die.value}
           isHeld ={die.isHeld}
           holdDice={() => holdDice(die.id)}
         />
