@@ -4,6 +4,8 @@ import Die from './components/dieComponents/Die';
 import { nanoid } from 'nanoid';
 import {React, useState, useEffect} from 'react';
 import Confetti from 'react-confetti';
+// import { Modal, Button } from 'react-bootstrap';
+
 
 function App() {
 
@@ -23,7 +25,7 @@ function App() {
     }
   },[dice])
 
-  // //an array that generates 10 random numbers between 1-6
+  // an array that generates 10 random numbers between 1-6
 
   function generateNewDie() {
     return {
@@ -41,20 +43,23 @@ function App() {
     return newDice
   }
 
-  // //roll dice
+  // roll dice and deciding the game status win or lose
   function rollDice(){
-    if (!tenzies){
-      setDice(oldDice => oldDice.map(die => {
-        return (
-          die.isHeld ? die : generateNewDie()
-        )})
-      )
+    if (tenzies){
+      setTenzies(false);
+      setDice(resetDice());
+
     } else
-        setTenzies(false);
-        setDice(resetDice());
+    setDice(oldDice => oldDice.map(die => {
+      return (
+        die.isHeld ?
+        die :
+        generateNewDie()
+      )
+    }));
   }
 
-  // //holding dice value
+  // holding dice value
   const holdDice =(id) =>{
     setDice(oldDice => oldDice.map(die =>{
       return (
@@ -64,7 +69,7 @@ function App() {
     }))
   }
 
-  // rendering dice
+  // rendering dice elements
   const diceElements = dice.map(die => {
       return (
         <Die
@@ -78,7 +83,7 @@ function App() {
 
   return (
     <div className="App">
-      {tenzies && <Confetti />}
+      {tenzies && <Confetti className='confetti-event'/>}
         <Header />
         <div className= 'dice-container'>
           {diceElements}
@@ -87,8 +92,8 @@ function App() {
           className='roll--btn'
           onClick = {rollDice}
         >
-          {tenzies ? "New Game": "Roll"}
-          </button>
+          {tenzies ? 'New Game': 'Roll'}
+        </button>
     </div>
   );
 }
