@@ -1,5 +1,10 @@
 # React Tenzies game
 
+<img width="586" alt="Screenshot 2023-04-08 at 6 04 44 PM" src="https://user-images.githubusercontent.com/102884273/230744661-bda54bcf-89bc-4eb7-8a33-c651f13ae5cf.png">
+
+<img width="539" alt="Screenshot 2023-04-08 at 6 09 42 PM" src="https://user-images.githubusercontent.com/102884273/230744662-4b4b222c-8416-453f-9fb8-b728af4c2e94.png">
+
+- A game where you can pick all 10 matching die that are randomly generated
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Dependencies
