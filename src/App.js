@@ -69,7 +69,13 @@ function App() {
   // rendering dice
   const diceElements = dice.map(die => {
       return (
-        <Die value ={die.number} />
+        <Die
+          value ={die.number}
+          key = {die.id}
+          isHeld ={die.isHeld}
+          holdDice={() => holdDice(die.id)}
+
+        />
         )
   })
 
