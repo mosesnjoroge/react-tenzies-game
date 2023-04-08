@@ -10,6 +10,7 @@ function App() {
   const[dice,setDice] = useState(resetDice())
   const [tenzies, setTenzies] = useState(false);
 
+  // game status validation
   useEffect(() => {
 
     const allHeld = dice.every(die => die.isHeld)
