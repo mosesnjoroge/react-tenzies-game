@@ -3,7 +3,6 @@
   background-color: white;
   height: 620px;
   border-radius: 5px;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,7 +18,6 @@ body{
   display: grid;
   grid-template:auto auto / repeat(5, 1fr);
   gap: 20px;
-
 }
 
 .dice--face{
@@ -41,8 +39,14 @@ body{
 .roll--btn{
   margin-top: 40px;
   width:20%;
-  height:5%;
+  height:fit-content;
   background-color: #AC2FCB;
   color: white;
   border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.confetti-event{
+  height:100%;
 }
