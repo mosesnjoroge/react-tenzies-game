@@ -15,7 +15,6 @@ function App() {
 
     const allHeld = dice.every(die => die.isHeld)
     const iniValue = dice[0].value;
-    // const currentDieValue = dice.map(die => die.value)
 
     const allSameValue = dice.every(die => die.value === iniValue)
     if (allHeld && allSameValue === true){
