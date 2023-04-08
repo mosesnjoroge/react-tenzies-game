@@ -15,9 +15,9 @@ function App() {
 
     const allHeld = dice.every(die => die.isHeld)
     const iniValue = dice[0].value;
-    const currentDieValue = dice.map(die => die.value)
+    // const currentDieValue = dice.map(die => die.value)
 
-    const allSameValue = dice.every(iniValue === currentDieValue )
+    const allSameValue = dice.every(die => die.value === iniValue)
     if (allHeld && allSameValue === true){
       setTenzies(true);
       console.log('You Won')
@@ -45,8 +45,9 @@ function App() {
   // //roll dice
   function rollDice(){
     setDice(oldDice => oldDice.map(die => {
-      return (
-        die.isHeld ? die : generateNewDie()
+      return ( die.isHeld ?
+        die :
+        generateNewDie()
         )
     }))
   }

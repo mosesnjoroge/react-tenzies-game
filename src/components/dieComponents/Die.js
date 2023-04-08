@@ -11,7 +11,7 @@ export default function Die(props) {
       style = {styles}
       onClick= {props.holdDice}
     >
-      <h2 className='die--num'>{props}</h2>
+      <h2 className='die--num'>{props.value}</h2>
     </div>
   )
 }
