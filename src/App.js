@@ -1,14 +1,13 @@
 import './components/css/App.css';
 import Header from './components/dieComponents/Header';
-
 import Die from './components/dieComponents/Die';
 import { nanoid } from 'nanoid';
-import { useState,useEffect } from 'react';
+import {React, useState, useEffect} from 'react';
 
 function App() {
 
   // states
-  const[dice, setDice] = useState(allNewDice())
+  const[dice,setDice] = useState(resetDice())
   const [tenzies, setTenzies] = useState(false);
 
   useEffect(() => {
@@ -30,25 +29,25 @@ function App() {
     }
   },[dice])
 
-  //an array that generates 10 random numbers between 1-6
+  // //an array that generates 10 random numbers between 1-6
 
   function generateNewDie() {
     return {
-      value: Math.ceil(Math.random() * 6),
+      value: (Math.ceil(Math.random() * 6)),
       isHeld:false,
       id:nanoid()
     }
   }
 
-  function allNewDice() {
+  function resetDice() {
     const newDice = []
-    for (let i = 0; i < 10; i++){
-      newDice.push(generateNewDie())
+    for (let i = 0; i < 10; i++) {
+      newDice.push(Math.ceil(Math.random() * 6))
     }
     return newDice
   }
 
-  //roll dice
+  // //roll dice
   function rollDice(){
     setDice(oldDice => oldDice.map(die => {
       return (
@@ -57,7 +56,7 @@ function App() {
     }))
   }
 
-  //holding dice value
+  // //holding dice value
   const holdDice =(id) =>{
     setDice(oldDice => oldDice.map(die =>{
       return (
@@ -68,16 +67,11 @@ function App() {
   }
 
   // rendering dice
-  const diceElements = dice.map(die =>
-        <Die
-          // key={die.id}
-          value ={die}
-          // isHeld={die.isHeld}
-          // holdDice={() => holdDice(dice.id)}
-        />
-  )
-
-
+  const diceElements = dice.map(die => {
+      return (
+        <Die value ={die.number} />
+        )
+  })
 
   return (
     <div className="App">
@@ -85,7 +79,7 @@ function App() {
       <div className= 'dice-container'>
         {diceElements}
       </div>
-      <button className='roll--btn' onClick={rollDice}>Roll</button>
+      <button className='roll--btn' onClick = {rollDice}>Roll</button>
     </div>
   );
 }
