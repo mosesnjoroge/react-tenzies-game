@@ -37,14 +37,7 @@ body{
 }
 
 .roll--btn{
-  margin-top: 40px;
-  width:20%;
-  height:fit-content;
-  background-color: #AC2FCB;
-  color: white;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 20px;
+  width: 150px;
 }
 
 .confetti-event{
