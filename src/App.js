@@ -4,7 +4,8 @@ import Die from './components/dieComponents/Die';
 import { nanoid } from 'nanoid';
 import {React, useState, useEffect} from 'react';
 import Confetti from 'react-confetti';
-
+import { Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
@@ -87,12 +88,14 @@ function App() {
         <div className= 'dice-container'>
           {diceElements}
         </div>
-        <button
-          className='roll--btn'
+        <Button
+          className='d-flex gap-3 mt-4'
+          variant='outline-primary'
+          size='lg'
           onClick = {rollDice}
         >
           {tenzies ? 'New Game': 'Roll'}
-        </button>
+        </Button>
     </div>
   );
 }
