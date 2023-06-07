@@ -88,14 +88,16 @@ function App() {
         <div className= 'dice-container'>
           {diceElements}
         </div>
-        <Button
-          className='d-flex gap-3 mt-4'
-          variant='outline-primary'
-          size='lg'
-          onClick = {rollDice}
-        >
-          {tenzies ? 'New Game': 'Roll'}
-        </Button>
+        <div className='d-grid mt-5 roll--btn'>
+          <Button
+            className='w-100'
+            variant='outline-primary'
+            size='lg'
+            onClick = {rollDice}
+          >
+            {tenzies ? 'New Game': 'Roll'}
+          </Button>
+        </div>
     </div>
   );
 }
